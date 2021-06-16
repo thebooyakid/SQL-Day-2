@@ -1,0 +1,41 @@
+CREATE TABLE food_vendor(
+	vendor_id SERIAL PRIMARY KEY,
+	vendor_item VARCHAR(100),
+	price NUMERIC(3,2)
+);
+
+CREATE TABLE movie(
+	title VARCHAR(100) PRIMARY KEY,
+	theater_number INTEGER
+);
+
+CREATE TABLE concession(
+	consumable_item VARCHAR(100) PRIMARY KEY,
+	price NUMERIC(3,2),
+	vendor_id INTEGER NOT NULL,
+	FOREIGN KEY(vendor_id) REFERENCES food_vendor(vendor_id)
+);
+
+CREATE TABLE theater(
+	theater_number INTEGER PRIMARY KEY,
+	title VARCHAR(100),
+	FOREIGN KEY(title) REFERENCES movie(title)
+);
+
+CREATE TABLE ticket(
+	ticket_code SERIAL PRIMARY KEY,
+	price NUMERIC(3,2),
+	theater_number INTEGER,
+	FOREIGN KEY(theater_number) REFERENCES theater(theater_number)
+);
+
+CREATE TABLE customer(
+	customer_id  SERIAL PRIMARY KEY,
+	first_name VARCHAR(100),
+	last_name VARCHAR(100),
+	ticket_code INTEGER NOT NULL,
+	consumable_item VARCHAR(100),
+	FOREIGN KEY(ticket_code) REFERENCES ticket(ticket_code),
+	FOREIGN KEY(consumable_item) REFERENCES concession(consumable_item)
+);
+

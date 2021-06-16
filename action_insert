@@ -1,0 +1,59 @@
+INSERT INTO food_vendor(
+	vendor_id,
+	vendor_item,
+	price
+)VALUES(
+	1,
+	'popcorn',
+	8.00
+);
+
+INSERT INTO movie(
+	title,
+	theater_number
+)VALUES(
+	'Action Movie 2: Double Action Karate',
+	2
+);
+
+INSERT INTO concession(
+	consumable_item,
+	price,
+	vendor_id
+)VALUES(
+	'soda',
+	6.00,
+	1
+);
+
+INSERT INTO theater(
+	theater_number,
+	title
+)VALUES(
+	7,
+	'Action Movie 2: Double Action Karate'
+);
+
+INSERT INTO ticket(
+	ticket_code,
+	price,
+	theater_number
+)VALUES(
+	1,
+	7.00,
+	7
+);
+
+INSERT INTO customer(
+	customer_id,
+	first_name,
+	last_name,
+	ticket_code,
+	consumable_item
+)VALUES(
+	1,
+	'Willaim',
+	'Williamson',
+	1,
+	'soda'
+);
